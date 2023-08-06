@@ -28,7 +28,7 @@ const gltfLoader = new GLTFLoader();
 gltfLoader.setDRACOLoader(dracoLoader);
 
 let mixer = null;
-let objectDistance = 4;
+let objectDistance = 3.5;
 let objects = [];
 
 function loadModel(url) {
@@ -59,7 +59,7 @@ async function loadModels() {
     objects.push(gbaCheeseGltf.scene);
     scene.add(gbaCheeseGltf.scene);
 
-    objects[0].position.y = -objectDistance * 0;
+    objects[0].position.y = -objectDistance * 0.15;
     objects[1].position.y = -objectDistance * 1;
     objects[2].position.y = -objectDistance * 2;
     objects[3].position.y = -objectDistance * 3;
@@ -148,9 +148,9 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
  * Scroll
  */
 let scrollY = 0;
-window.addEventListener('scroll', ()=> {
-    scrollY = window.scrollY 
-})
+window.addEventListener("scroll", () => {
+  scrollY = window.scrollY;
+});
 
 /**
  * Animate
@@ -163,10 +163,16 @@ const tick = () => {
 
   //animate Camera
 
-  camera.position.y = - scrollY / sizes.height * objectDistance
+  camera.position.y = (-scrollY / sizes.height) * objectDistance;
 
   const deltaTime = elapsedTime - previousTime;
   previousTime = elapsedTime;
+
+  objects.length > 0
+    ? objects.map((object) => {
+        object.rotation.y = elapsedTime * .5
+      })
+    : null;
 
   if (mixer) {
     mixer.update(deltaTime);
