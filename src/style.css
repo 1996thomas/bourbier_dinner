@@ -1,0 +1,45 @@
+@font-face {
+    font-family: mont;
+    src: url('/Mont-HeavyDEMO.otf');
+}
+* {
+  margin: 0;
+  padding: 0;
+  font-family: mont;
+}
+
+body {
+  background-color: #e9d9c2;
+}
+
+.webgl {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.menu{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.menu div {
+  height: 100vh;
+  position: relative;
+  color: #ffeded;
+  text-transform: uppercase;
+  font-size: 7vmin;
+
+}
+p {
+    color: #e6413f;
+  }
+
+.logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 0;
+}
